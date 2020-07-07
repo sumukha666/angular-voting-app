@@ -50,16 +50,16 @@ try {
 }
 
 try {
-    query = `CREATE TABLE IF NOT EXISTS Response
+    query = `CREATE TABLE IF NOT EXISTS Vote
                     (respId  INT AUTO_INCREMENT PRIMARY KEY, 
-                    adminName VARCHAR(255),
+                    userName VARCHAR(255),
                     topicId INT,
                     topicResp BOOLEAN  NOT NULL,
-                    FOREIGN KEY (adminName) REFERENCES User(userId),
+                    FOREIGN KEY (userName) REFERENCES User(userId),
                     FOREIGN KEY (topicId) REFERENCES Topic(topicId))  ENGINE=INNODB;`
     db.query(query, function (err, result) {
         if (err) throw err;
-        console.log("Table Topic initialized");
+        console.log("Table Vote initialized");
       });
 } catch(err){
     console.log(err);
