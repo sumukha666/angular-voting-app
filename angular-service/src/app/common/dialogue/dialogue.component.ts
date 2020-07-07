@@ -1,5 +1,6 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dialogue',
@@ -22,19 +23,20 @@ export class DialogueComponent implements OnInit {
   @Input() modalButton;
   @Input() modalTitle;
   @Input() modalType;
-  @Input() onSubmit;
+  @Output() getFormSubmit:EventEmitter<any> = new EventEmitter<any>();
   closeResult: string;
-  submitModal(data){
-    this.onSubmit(data);
-    data.close()
-  }
+  FormResult: Array<Object>;
+
+
 
   constructor(private modalService: NgbModal) {}
   ngOnInit(): void {
-
   }
   openScrollableContent(longContent) {
     this.modalService.open(longContent, { scrollable: true,  centered: true  });
+  }
+  submitModal(data){
+    this.getFormSubmit.emit(data);
   }
 
 }

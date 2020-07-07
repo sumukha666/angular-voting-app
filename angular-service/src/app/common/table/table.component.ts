@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -13,11 +13,14 @@ export class TableComponent implements OnInit {
   @Input() showAddBtn;
   @Input() modalButton;
   @Input() modalType;
-  @Input() onSubmit;
   @Input() modalTitle;
-
+  @Output() onSubmitFun:EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(): void {
     console.log(this.TableHeading)
+  }
+
+  getFormSubmit(data){
+    this.onSubmitFun.emit(data);
   }
 
 }

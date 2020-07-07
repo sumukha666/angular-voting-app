@@ -12,6 +12,7 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { TableComponent } from './common/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogueComponent } from './common/dialogue/dialogue.component';
+import { UserFormComponent } from './admin/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DialogueComponent } from './common/dialogue/dialogue.component';
     AdminUsersComponent,
     TableComponent,
     DialogueComponent,
+    UserFormComponent,
   ],
   imports: [
     BrowserModule,

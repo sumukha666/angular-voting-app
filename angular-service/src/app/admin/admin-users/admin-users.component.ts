@@ -8,10 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdminUsersComponent implements OnInit {
   constructor(private http: HttpClient) {}
-  TableHeading="Users"
+  TableHeading = 'Users';
   header = [];
   rows = [];
-  showAddBtn=true;
+  showAddBtn = true;
+  onSubmitFun(data) {
+    console.log('getting form value');
+    console.log(data);
+    data["isAdmin"] = data["isAdmin"] ? true : false;
+    this.http.post('http://127.0.0.1:3000/users', data).subscribe((result) => {
+      console.log(result);
+    });
+  }
   ngOnInit(): void {
     this.http.get('http://127.0.0.1:3000/users').subscribe((data) => {
       console.log(data);
@@ -21,8 +29,4 @@ export class AdminUsersComponent implements OnInit {
       }
     });
   }
-  onSubmit(data) {
-    console.log(data);
-  }
-
 }

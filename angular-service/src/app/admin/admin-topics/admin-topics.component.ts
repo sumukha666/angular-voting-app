@@ -9,7 +9,6 @@ import {HttpClient} from "@angular/common/http";
 export class AdminTopicsComponent implements OnInit {
 
   constructor(private http:HttpClient) { }
-  TableHeading="Topics";
   header=[];
   rows=[];
   showAddBtn=true;

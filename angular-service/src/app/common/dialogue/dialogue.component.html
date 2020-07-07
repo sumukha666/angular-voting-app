@@ -8,12 +8,12 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <app-user-form (submitModal)="submitModal($event); modal.dismiss('Cross click')">
+    </app-user-form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="submitModal(modal)">{{modalType}}</button>
+    <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')" *ngIf="modalType!=='Submit'">{{modalType}}</button>
   </div>
 </ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2 btn-sm modalBtn" (click)="openScrollableContent(longContent)">{{modalButton}}</button>
+<button class="btn btn-outline-primary mb-2 mr-2 btn-sm modalBtn"
+(click)="openScrollableContent(longContent)">{{modalButton}}</button>

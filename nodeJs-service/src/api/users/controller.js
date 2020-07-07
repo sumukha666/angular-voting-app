@@ -29,8 +29,8 @@ const createUser = async (req, res) => {
 
         db.query(query, function (err, result, fields) {
             if (err) {
-                res.status(500).json({ success: false, message: "something went wrong, please try again" });
-                throw err;
+                res.status(500).json({ success: false, message: "something went wrong, please try again",error:err });
+                //throw err;
             } else {
                 return res.status(200).json({ success: true, message: `created User ${userName} successfully` });
             }
