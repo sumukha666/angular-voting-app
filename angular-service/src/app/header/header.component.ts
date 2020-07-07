@@ -8,9 +8,11 @@ import { Component, OnInit,Input } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input() isAdmin;
-
-  ngOnInit(): void {
+  @Input() selected;
+  ngOnInit( ): void {
     console.log(this.isAdmin)
+    console.log(this.selected)
   }
+
 
 }
