@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-admin-topics',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminTopicsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private http:HttpClient) { }
+  TableHeading="Topics";
+  header=[];
+  rows=[];
+  showAddBtn=true;
   ngOnInit(): void {
+    this.http.get("http://127.0.0.1:3000/topics").subscribe((data)=>{
+      if(data["success"]){
+        this.header=["topicId","creatorName","time","statement","category"];
+        this.rows=data["topics"];
+      }
+    })
   }
 
 }

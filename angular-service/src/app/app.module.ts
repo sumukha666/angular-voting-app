@@ -9,6 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { AdminDashBoardComponent } from './admin/admin-dash-board/admin-dash-board.component';
 import { AdminTopicsComponent } from './admin/admin-topics/admin-topics.component';
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
+import { TableComponent } from './common/table/table.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DialogueComponent } from './common/dialogue/dialogue.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
     AdminDashBoardComponent,
     AdminTopicsComponent,
     AdminUsersComponent,
+    TableComponent,
+    DialogueComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
