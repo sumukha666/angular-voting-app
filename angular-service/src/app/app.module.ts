@@ -4,10 +4,18 @@ import {FormsModule} from "@angular/forms"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { HeaderComponent } from './header/header.component';
+import { AdminDashBoardComponent } from './admin/admin-dash-board/admin-dash-board.component';
+import { AdminTopicsComponent } from './admin/admin-topics/admin-topics.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginPageComponent,
+    HeaderComponent,
+    AdminDashBoardComponent,
+    AdminTopicsComponent,
   ],
   imports: [
     BrowserModule,
