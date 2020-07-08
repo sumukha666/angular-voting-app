@@ -1,0 +1,5 @@
+<app-header [isAdmin]="false" [selected] ="'topics'"></app-header>
+<app-table [rows]="rows" [TableHeading]="'Topics'"
+[showAddBtn]="false" [displayTopics]="true" [showTopicTools]="false"
+(getTopicResp)="getTopicResp($event)"
+></app-table>

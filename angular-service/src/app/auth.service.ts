@@ -20,4 +20,8 @@ export class AuthService {
   isAdminLogin() {
     return localStorage.getItem("isAdmin");
   }
+  clearToken() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAdmin");
+  }
 }
