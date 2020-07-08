@@ -9,16 +9,24 @@
     <li class="nav-item">
       <a class="nav-link {{selected==='users'? 'active' : ''}}" href="/admin/users">User</a>
     </li>
+    <li>
+      <button class="btn btn-primary" (click)="logoutFun()">logout</button>
+    </li>
   </ul>
+
 </div>
 
 <ng-template #userNav>
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Home</a>
+      <a class="nav-link {{selected==='home'? 'active' : ''}}" href="/user/home">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Topics</a>
+      <a class="nav-link {{selected==='topics'? 'active' : ''}}" href="/user/topics">Topics</a>
+    </li>
+    <li>
+      <button class="btn btn-primary" style="float: right;" (click)="logoutFun()">logout</button>
     </li>
   </ul>
+
 </ng-template>

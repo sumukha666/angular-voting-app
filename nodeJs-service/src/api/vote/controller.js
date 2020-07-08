@@ -37,22 +37,35 @@ const getVoteDetails = async (req, res) => {
 
 
 const createVote = async (req, res) => {
-    const { userName, topicId, topicResp } = req.body;
+    const { topicId, topicResp } = req.body;
+    const {userId} = req.userInfo;
+    let qur= ` SELECT * FROM Vote WHERE userName='${userId}' and topicId='${topicId}'`
+    let query;
     try {
-
-        const query = `INSERT INTO Vote(userName, topicId, topicResp)
-                        VALUES
-                        ("${userName}","${topicId}", ${topicResp} )`;
-
-        db.query(query, function (err, result, fields) {
-            if (err) {
-                res.status(500).json({ success: false, message: "something went wrong, please try again" });
+        db.query(qur,(err,result)=>{
+            if(err){
                 console.log(err);
-            } else {
-                return res.status(200).json({ success: true, message: "response saved successfully" });
+            }
+            if(result.length>0){
+                query = `UPDATE Vote SET topicResp = ${topicResp} WHERE  userName='${userId}' and topicId='${topicId}'`
+            }else {
+                query = `INSERT INTO Vote(userName, topicId, topicResp)
+                        VALUES
+                        ("${userId}","${topicId}", ${topicResp} )`;
             }
 
-        });
+            db.query(query, function (err, result, fields) {
+                if (err) {
+                    res.status(500).json({ success: false, message: "something went wrong, please try again" });
+                    console.log(err);
+                } else {
+                    return res.status(200).json({ success: true, message: "response saved successfully" });
+                }
+    
+            });
+        })
+
+        
 
     } catch (err) {
         console.log(err);

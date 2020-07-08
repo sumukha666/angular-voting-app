@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
         res=> {
               localStorage.setItem('token',res["token"]);
               localStorage.setItem('isAdmin',res["isAdmin"]);
-              this._route.navigate(["/admin/home"]);
+              (res["isAdmin"]) ? this._route.navigate(["/admin/home"]) : this._route.navigate(["/user/home"]);
             },
         err=> console.log(err)
       );

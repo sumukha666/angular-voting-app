@@ -16,8 +16,13 @@ export class TableComponent implements OnInit {
   @Input() modalTitle;
   @Input() displayTopics;
   @Input() showForm;
+  @Input() showTopicTools;
   @Output() onSubmitFun:EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete:EventEmitter<any> = new EventEmitter<any>();
+  @Output() getTopicResp:EventEmitter<any> = new EventEmitter<any>();
+  selected:Boolean;
+  liked: Boolean;
+  previousButtonEvent;
   ngOnInit(): void {
     console.log(this.TableHeading)
   }
@@ -31,7 +36,9 @@ export class TableComponent implements OnInit {
   }
 
   getRow(data){
-    console.log(data);
     this.onDelete.emit(data);
+  }
+  getTopicVote(topic,vote){
+    this.getTopicResp.emit({topic,vote});
   }
 }

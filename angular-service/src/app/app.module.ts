@@ -16,7 +16,10 @@ import { UserFormComponent } from './admin/user-form/user-form.component';
 import { TopicFormComponent } from './admin/topic-form/topic-form.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
-import {TokenInterceptorService} from "./services/token-interceptor.service"
+import {TokenInterceptorService} from "./services/token-interceptor.service";
+import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
+import { UserTopicsComponent } from './user/user-topics/user-topics.component';
+import {UserAuthGuard} from "./user-auth.guard"
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +32,8 @@ import {TokenInterceptorService} from "./services/token-interceptor.service"
     DialogueComponent,
     UserFormComponent,
     TopicFormComponent,
+    UserDashboardComponent,
+    UserTopicsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import {TokenInterceptorService} from "./services/token-interceptor.service"
     NgbModule,
     HttpClientModule,
   ],
-  providers: [AuthGuard, AuthService,
+  providers: [AuthGuard, AuthService,UserAuthGuard,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,

@@ -22,7 +22,7 @@
             <div class="card row">
               <div class="card-header">
                 {{row.category}}
-                <div class="floatRight">
+                <div class="floatRight" *ngIf="showTopicTools">
                   <button (click)="getRow(row)" class="btn BackgroundColor "> <i class="fa fa-trash"> Delete</i></button>
                   <button type="button" class="btn BackgroundColor">
                     <i class="fa fa-info"> Info </i>
@@ -35,6 +35,26 @@
                   <footer class="blockquote-footer">
                     <cite title="Author">{{row.creatorName}}</cite>
                     <cite title="Time" class="floatRight" >{{getDate(row.time)}}</cite>
+                    <br>
+                    <div class="floatRight">
+                        <button
+                        type="button" class="btn btn-sm BackgroundColor"
+                        [autoClose]="true" ngbPopover="Liked"
+                        #popover3="ngbPopover"
+                        (click)="getTopicVote(row,true)"
+                      >
+                          Like
+                      </button>
+                      <button
+                        type="button" class="btn btn-sm BackgroundColor"
+                        [autoClose]="true" ngbPopover="DisLiked"
+                        value=0
+                        #popover3="ngbPopover"
+                        (click)="getTopicVote(row,false)"
+                      >
+                          DisLike
+                      </button>
+                    </div>
                   </footer>
                 </blockquote>
               </div>

@@ -1,9 +1,10 @@
 const mysql = require('mysql');
-
+const mysqlUSer = "root";
+const password = "Qwerty@123";
 let db = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "Qwerty@123"
+    user: mysqlUSer,
+    password: password
   });
 
 try {
@@ -18,8 +19,8 @@ try {
 
 db = mysql.createConnection({
     host: "localhost",
-    user: "root",
-    password: "Qwerty@123",
+    user: mysqlUSer,
+    password: password,
     database:"VotingApp"
   });
 
@@ -58,7 +59,7 @@ try {
                     FOREIGN KEY (userName) REFERENCES User(userId),
                     FOREIGN KEY (topicId) REFERENCES Topic(topicId))  ENGINE=INNODB;`
     db.query(query, function (err, result) {
-        if (err) throw err;
+        if (err) 
         console.log("Table Vote initialized");
       });
 } catch(err){
@@ -68,7 +69,7 @@ try {
 try {
     query = ` INSERT INTO User (userId, userName, password, isAdmin) VALUES ("admin@pca.com",'admin',"Qwerty@123",true)`;
     db.query(query, function (err, result) {
-        if (err){ throw err;}
+        if (err){ }
         console.log("Admin initialized with id:admin@pca.com, password: Qwerty@123");
       });
 } catch(err){
