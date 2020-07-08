@@ -17,4 +17,7 @@ export class AuthService {
   getToken() {
     return localStorage.getItem("token");
   }
+  isAdminLogin() {
+    return localStorage.getItem("isAdmin");
+  }
 }

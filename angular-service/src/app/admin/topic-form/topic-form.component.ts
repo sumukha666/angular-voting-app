@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class Topic {
-  public name: string;
-  public email: string;
-  public password: string;
-  public isAdmin: Boolean;
+  public category: string;
+  public statement: string;
 }
 
 

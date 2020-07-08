@@ -22,7 +22,8 @@ export class LoginPageComponent implements OnInit {
     this._auth.userLogin(form.value)
       .subscribe(
         res=> {
-              localStorage.setItem('token',res["token"])
+              localStorage.setItem('token',res["token"]);
+              localStorage.setItem('isAdmin',res["isAdmin"]);
               this._route.navigate(["/admin/home"]);
             },
         err=> console.log(err)

@@ -18,12 +18,13 @@ const getTopics = async (req, res) => {
 }
 
 const createTopic = async (req, res) => {
-    const { creatorName, statement, category } = req.body;
+    const { statement, category } = req.body;
+    const { userId } = req.userInfo
     try {
 
         const query = `INSERT INTO Topic(creatorName, statement, category)
                         VALUES
-                        ("${creatorName}","${statement}", "${category}" )`;
+                        ("${userId}","${statement}", "${category}" )`;
 
         db.query(query, function (err, result, fields) {
             if (err) {

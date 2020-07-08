@@ -8,8 +8,11 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-user-form (submitModal)="submitModal($event); modal.dismiss('Cross click')">
-    </app-user-form>
+    <div [ngSwitch]="showForm">
+        <app-user-form *ngSwitchCase="'users'" (submitModal)="submitModal($event); modal.dismiss('Cross click')">
+        </app-user-form>
+        <app-topic-form *ngSwitchCase="'topics'" (submitModal)="submitModal($event); modal.dismiss('Cross click')"></app-topic-form>
+  </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')" *ngIf="modalType!=='Submit'">{{modalType}}</button>

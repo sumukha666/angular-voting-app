@@ -13,10 +13,12 @@ const routes: Routes = [
   {
     path: 'admin/home',
     component: AdminDashBoardComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'admin/topics',
     component: AdminTopicsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'admin/users',

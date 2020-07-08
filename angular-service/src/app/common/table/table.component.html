@@ -8,6 +8,7 @@
       [modalType]="modalType"
       (getFormSubmit)="getFormSubmit($event)"
       [modalTitle]="modalTitle"
+      [showForm]="showForm"
     ></app-dialogue>
     <!-- {{Modalbutton.component}} -->
   </div>
@@ -21,7 +22,12 @@
             <div class="card row">
               <div class="card-header">
                 {{row.category}}
-                <button (click)="getRow(row)">samle Check</button>
+                <div class="floatRight">
+                  <button (click)="getRow(row)" class="btn BackgroundColor "> <i class="fa fa-trash"> Delete</i></button>
+                  <button type="button" class="btn BackgroundColor">
+                    <i class="fa fa-info"> Info </i>
+                  </button>
+                </div>
               </div>
               <div class="card-body">
                 <blockquote class="blockquote mb-0">

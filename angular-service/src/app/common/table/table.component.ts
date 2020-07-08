@@ -15,7 +15,9 @@ export class TableComponent implements OnInit {
   @Input() modalType;
   @Input() modalTitle;
   @Input() displayTopics;
+  @Input() showForm;
   @Output() onSubmitFun:EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete:EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(): void {
     console.log(this.TableHeading)
   }
@@ -25,12 +27,11 @@ export class TableComponent implements OnInit {
   }
   getDate(timeStamp){
     let date = new Date(timeStamp);
-    console.log(date.getDate());
-    console.log(date.getHours());
-    return `Created ${date.getHours()} hrs ago (${date.getDate()}/${date.getMonth()}/${date.getFullYear()})`;
+    return `Created at ${date.getHours()}:${date.getMinutes()} on (${date.getDate()}/${date.getMonth()}/${date.getFullYear()})`;
   }
 
   getRow(data){
     console.log(data);
+    this.onDelete.emit(data);
   }
 }
