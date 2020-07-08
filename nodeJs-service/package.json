@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "create:admin":"node ./src/db/dbSetup"
+    "create:admin":"node ./src/db/dbSetup",
+    "create:db":"node ./src/db/createDb"
   },
   "author": "Sumukha",
   "license": "ISC",
