@@ -23,10 +23,15 @@
               <div class="card-header">
                 {{row.category}}
                 <div class="floatRight" *ngIf="showTopicTools">
-                  <button (click)="getRow(row)" class="btn BackgroundColor "> <i class="fa fa-trash"> Delete</i></button>
-                  <button type="button" class="btn BackgroundColor">
+                  <button (click)="getRow(row)" class="btn btn-outline-primary mb-2 mr-2 btn-sm padding"> <i class="fa fa-trash"> Delete</i></button>
+                  <!-- <button type="button" class="btn BackgroundColor" (click)="getInfo(row)">
                     <i class="fa fa-info"> Info </i>
-                  </button>
+                  </button> -->
+                  <app-dialogue [modalTitle]="'Voting results'" [modalButton]="'Info'"
+                  [respheader]="respheader" [respRows] = "respRows"
+                  (click)="getInfo(row)" [showForm]="'votes'">
+
+                  </app-dialogue>
                 </div>
               </div>
               <div class="card-body">
@@ -36,7 +41,7 @@
                     <cite title="Author">{{row.creatorName}}</cite>
                     <cite title="Time" class="floatRight" >{{getDate(row.time)}}</cite>
                     <br>
-                    <div class="floatRight">
+                    <div class="floatRight" *ngIf="!showTopicTools">
                         <button
                         type="button" class="btn btn-sm BackgroundColor"
                         [autoClose]="true" ngbPopover="Liked"
@@ -82,7 +87,7 @@
         </tbody>
       </ng-template>
     </table>
-    <nav class="nav-Bar">
+    <!-- <nav class="nav-Bar">
       <ul class="pagination">
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Previous">
@@ -100,6 +105,6 @@
           </a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
 </div>

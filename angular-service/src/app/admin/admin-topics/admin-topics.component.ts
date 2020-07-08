@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TopicsService } from '../../services/topic/topics.service';
+import { VotesService } from "../../services/vote/votes.service"
 @Component({
   selector: 'app-admin-topics',
   templateUrl: './admin-topics.component.html',
   styleUrls: ['./admin-topics.component.scss'],
 })
 export class AdminTopicsComponent implements OnInit {
-  constructor(private http: HttpClient, private _topicServ: TopicsService) {}
+  constructor(private http: HttpClient, private _topicServ: TopicsService,private _votes:VotesService) {}
   header = [];
   rows = [];
+  respheader=[]
+  respRows=[]
   showAddBtn = true;
   ngOnInit(): void {
     this.getTopics();
@@ -56,4 +59,20 @@ export class AdminTopicsComponent implements OnInit {
       (err) => console.log(err)
     );
   }
+
+
+  getTopicDetail(data){
+    console.log(data);
+    this._votes.getVoteDetails(data.topicId)
+    .subscribe(
+      (res)=> {
+        console.log(res);
+        this.respheader=["userName","topicResp"];
+        this.respRows=res.votes;
+      },
+      (err) => console.log(err)
+    )
+  }
+
+
 }
