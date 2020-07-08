@@ -21,7 +21,9 @@ const userLogin = async (req, res) => {
                         }, "secret", {
                             expiresIn: "2d"
                         })
-                        res.status(200).json({ success: true, message: "User login success", token });
+                        res.status(200).json({ success: true, message: "User login success", token, isAdmin: result[0].isAdmin });
+                    } else {
+                        res.status(200).json({ success: false, message: "Incorrect User Id or password" });
                     }
                 })
 
