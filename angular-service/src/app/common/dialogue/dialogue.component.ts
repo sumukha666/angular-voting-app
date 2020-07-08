@@ -24,6 +24,8 @@ export class DialogueComponent implements OnInit {
   @Input() modalTitle;
   @Input() modalType;
   @Input() showForm;
+  @Input() respheader;
+  @Input() respRows;
   @Output() getFormSubmit:EventEmitter<any> = new EventEmitter<any>();
   closeResult: string;
   FormResult: Array<Object>;

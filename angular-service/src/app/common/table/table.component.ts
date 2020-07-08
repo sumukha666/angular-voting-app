@@ -17,9 +17,12 @@ export class TableComponent implements OnInit {
   @Input() displayTopics;
   @Input() showForm;
   @Input() showTopicTools;
+  @Input() respheader;
+  @Input() respRows;
   @Output() onSubmitFun:EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete:EventEmitter<any> = new EventEmitter<any>();
   @Output() getTopicResp:EventEmitter<any> = new EventEmitter<any>();
+  @Output() getTopicDetail:EventEmitter<any> = new EventEmitter<any>();
   selected:Boolean;
   liked: Boolean;
   previousButtonEvent;
@@ -40,5 +43,8 @@ export class TableComponent implements OnInit {
   }
   getTopicVote(topic,vote){
     this.getTopicResp.emit({topic,vote});
+  }
+  getInfo(data) {
+    this.getTopicDetail.emit(data)
   }
 }

@@ -11,7 +11,9 @@
     <div [ngSwitch]="showForm">
         <app-user-form *ngSwitchCase="'users'" (submitModal)="submitModal($event); modal.dismiss('Cross click')">
         </app-user-form>
-        <app-topic-form *ngSwitchCase="'topics'" (submitModal)="submitModal($event); modal.dismiss('Cross click')"></app-topic-form>
+        <app-topic-form *ngSwitchCase="'topics'" (submitModal)="submitModal($event); modal.dismiss('Cross click')">
+        </app-topic-form>
+        <app-table *ngSwitchCase="'votes'" [header]="respheader" [rows]="respRows" [showForm]="'votes'"></app-table>
   </div>
   </div>
   <div class="modal-footer">

@@ -19,12 +19,13 @@ const getVotes = async (req, res) => {
 
 const getVoteDetails = async (req, res) => {
     const { params: { id } } = req;
+    console.log(id)
     try {
-        db.query(`SELECT * FROM Vote WHERE respId=${id}`, function (err, result, fields) {
+        db.query(`SELECT * FROM Vote WHERE topicId=${id}`, function (err, result, fields) {
             if (err) {
                 console.log(err);
-            } else {
                 res.json({ success: false, votes: [] });
+            } else {
                 res.status(200).json({ success: true, votes: result });
             }
         });
