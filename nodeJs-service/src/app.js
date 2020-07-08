@@ -16,5 +16,4 @@ app.use("/topics",topics);
 app.use("/users",users);
 app.use("/votes",votes);
 app.use("/login",login);
-
 module.exports = app;
