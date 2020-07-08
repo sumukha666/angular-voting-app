@@ -1,11 +1,12 @@
 const db = require("../../db/db");
-
+const bcrypt = require("bcrypt");
 const getUsers = async (req, res) => {
+    console.log(req.userInfo)
     try {
         db.query("SELECT * FROM User", function (err, result, fields) {
             if (err) {
                 res.json({ success: false, users: [] });
-                throw err;
+               console.log(err);
             } else {
                 res.status(200).json({ success: true, users: result });
             }
@@ -20,21 +21,29 @@ const getUsers = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-    const { userId, userName, password, isAdmin } = req.body;
+    const { userId, userName, isAdmin } = req.body;
+    let  { password } = req.body;
     try {
-        console.log(userId, userName, password, isAdmin)
-        const query = `INSERT INTO User(userId, userName, password, isAdmin)
-                        VALUES
-                        ("${userId}","${userName}", "${password}", ${isAdmin} )`;
 
-        db.query(query, function (err, result, fields) {
+        bcrypt.hash(password, 10, (err, hash) => {
             if (err) {
-                res.status(500).json({ success: false, message: "something went wrong, please try again" });
-                throw err;
+                console.log(err)
+                return res.status(500).json({ success: false, message: "something went wrong, please try again",err });
             } else {
-                return res.status(200).json({ success: true, message: `created User ${userName} successfully` });
+                const query = `INSERT INTO User(userId, userName, password, isAdmin)
+                        VALUES
+                        ("${userId}","${userName}", "${hash}", ${isAdmin} )`;
+                    
+                console.log(hash)
+                db.query(query, function (err, result, fields) {
+                    if (err) {
+                        res.status(500).json({ success: false, message: "something went wrong, please try again" });
+                    } else {
+                        return res.status(200).json({ success: true, message: `created User ${userName} successfully` });
+                    }
+                });
             }
-        });
+        })
 
     } catch (err) {
         console.log(err);

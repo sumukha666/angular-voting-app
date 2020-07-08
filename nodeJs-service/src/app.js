@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const topics = require("./api/topics");
 const users = require("./api/users");
 const votes = require("./api/vote");
+const login = require("./api/login");
 const bodyparser = require("body-parser");
 app.use(express.static("public"));
 app.set("view engine","ejs");
@@ -14,5 +15,6 @@ app.use(bodyparser.json());
 app.use("/topics",topics);
 app.use("/users",users);
 app.use("/votes",votes);
+app.use("/login",login);
 
 module.exports = app;
