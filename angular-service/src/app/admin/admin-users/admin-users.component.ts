@@ -18,15 +18,22 @@ export class AdminUsersComponent implements OnInit {
     data["isAdmin"] = data["isAdmin"] ? true : false;
     this.http.post('http://127.0.0.1:3000/users', data).subscribe((result) => {
       console.log(result);
+      if(result["success"]){
+        this.getUsers();
+      }
     });
   }
-  ngOnInit(): void {
+  getUsers(){
     this.http.get('http://127.0.0.1:3000/users').subscribe((data) => {
-      console.log(data);
       if (data['success']) {
         this.header = ['userId', 'userName', 'isAdmin'];
         this.rows = data['users'];
       }
     });
   }
+
+  ngOnInit(): void {
+    this.getUsers();
+  }
+
 }

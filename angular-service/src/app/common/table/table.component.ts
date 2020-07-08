@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   @Input() modalButton;
   @Input() modalType;
   @Input() modalTitle;
+  @Input() displayTopics;
   @Output() onSubmitFun:EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(): void {
     console.log(this.TableHeading)
@@ -22,5 +23,14 @@ export class TableComponent implements OnInit {
   getFormSubmit(data){
     this.onSubmitFun.emit(data);
   }
+  getDate(timeStamp){
+    let date = new Date(timeStamp);
+    console.log(date.getDate());
+    console.log(date.getHours());
+    return `Created ${date.getHours()} hrs ago (${date.getDate()}/${date.getMonth()}/${date.getFullYear()})`;
+  }
 
+  getRow(data){
+    console.log(data);
+  }
 }

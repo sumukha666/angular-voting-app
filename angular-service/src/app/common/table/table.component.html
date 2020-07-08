@@ -1,29 +1,60 @@
 <div class="card">
   <div class="card-header">
-    {{TableHeading}}
-    <app-dialogue *ngIf="showAddBtn" class="Modal" [modalButton]="modalButton" [modalType]="modalType" (getFormSubmit)="getFormSubmit($event)" [modalTitle]="modalTitle"></app-dialogue>
+    {{ TableHeading }}
+    <app-dialogue
+      *ngIf="showAddBtn"
+      class="Modal"
+      [modalButton]="modalButton"
+      [modalType]="modalType"
+      (getFormSubmit)="getFormSubmit($event)"
+      [modalTitle]="modalTitle"
+    ></app-dialogue>
     <!-- {{Modalbutton.component}} -->
   </div>
   <div class="card-body">
-    <table class="table table-striped">
-      <thead>
+    <table class="table">
+      <div *ngIf="displayTopics else elseBlock" >
 
-        <tr>
-          <th scope="col">S.No</th>
 
-          <th scope="col" *ngFor="let head of header">{{head}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let row of rows; let i=index">
-          <th scope="row">{{i+1}}</th>
-          <td *ngFor="let head of header">
-            {{row[head]}}
-          </td>
 
-        </tr>
-      </tbody>
+            <div  *ngFor="let row of rows; let i = index">
+            <div class="card row">
+              <div class="card-header">
+                {{row.category}}
+                <button (click)="getRow(row)">samle Check</button>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{row.statement}}</p>
+                  <footer class="blockquote-footer">
+                    <cite title="Author">{{row.creatorName}}</cite>
+                    <cite title="Time" class="floatRight" >{{getDate(row.time)}}</cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
 
+
+
+      </div>
+      <ng-template #elseBlock>
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+
+            <th scope="col" *ngFor="let head of header">{{ head }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td *ngFor="let head of header">
+              {{row[head]}}
+            </td>
+
+        </tbody>
+      </ng-template>
     </table>
     <nav class="nav-Bar">
       <ul class="pagination">

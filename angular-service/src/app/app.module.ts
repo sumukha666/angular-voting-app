@@ -13,6 +13,7 @@ import { TableComponent } from './common/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogueComponent } from './common/dialogue/dialogue.component';
 import { UserFormComponent } from './admin/user-form/user-form.component';
+import { TopicFormComponent } from './admin/topic-form/topic-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserFormComponent } from './admin/user-form/user-form.component';
     TableComponent,
     DialogueComponent,
     UserFormComponent,
+    TopicFormComponent,
   ],
   imports: [
     BrowserModule,
