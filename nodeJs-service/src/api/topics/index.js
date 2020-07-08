@@ -1,10 +1,11 @@
 const express = require("express");
 let router = express.Router();
 const controller = require("./controller");
+const checkAuth = require("../../middleware/check-auth");
 
-router.get("/",controller.getTopics);
-// router.post("/",controller.createTopic);
+router.get("/",checkAuth, controller.getTopics);
+router.post("/",checkAuth, controller.createTopic);
 // router.put("/:name",controller.updateTopic);
-// router.delete("/:name",controller.deleteTopic);
+router.delete("/:id",checkAuth, controller.deleteTopic);
 
 module.exports = router;

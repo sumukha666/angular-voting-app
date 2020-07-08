@@ -1,0 +1,23 @@
+<form #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
+  <div class="form-group">
+    <label>Category</label>
+    <input type="text" name="category" class="form-control" [(ngModel)]="model.category" #category="ngModel"
+      [ngClass]="{ 'is-invalid': (category.touched|| userForm.submitted) && category.invalid }" required>
+    <div class="invalid-feedback" *ngIf="(category.touched || userForm.submitted) && category.invalid">
+      <p *ngIf="category.errors.required">Category is required</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Statement</label>
+    <input type="text" name="statement" class="form-control" [(ngModel)]="model.statement" #statement="ngModel"
+      [ngClass]="{ 'is-invalid': (statement.touched|| userForm.submitted) && statement.invalid }" required>
+    <div class="invalid-feedback" *ngIf="(statement.touched || userForm.submitted) && statement.invalid">
+      <p *ngIf="statement.errors.required">statement is required</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-danger btn-block">Submit</button>
+  </div>
+</form>

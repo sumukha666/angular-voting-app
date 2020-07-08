@@ -1,0 +1,24 @@
+<div *ngIf="isAdmin else userNav">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link {{selected==='home'? 'active' : ''}}" href="/admin/home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {{selected==='topics'? 'active' : ''}}" href="/admin/topics">Topics</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {{selected==='users'? 'active' : ''}}" href="/admin/users">User</a>
+    </li>
+  </ul>
+</div>
+
+<ng-template #userNav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Topics</a>
+    </li>
+  </ul>
+</ng-template>

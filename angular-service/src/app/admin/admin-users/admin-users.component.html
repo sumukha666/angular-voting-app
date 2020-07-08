@@ -1,0 +1,8 @@
+<app-header [isAdmin]="true" [selected] ="'users'"></app-header>
+<app-table [header]="header" [rows]="rows" [TableHeading]="TableHeading"
+[showAddBtn]="showAddBtn" [modalButton]="'Add'" [showForm]="'users'"
+[modalType]="'Submit'" (onSubmitFun)="onSubmitFun($event)"
+[modalTitle]="'Add User'"
+></app-table>
+<app-dialogue></app-dialogue>
+

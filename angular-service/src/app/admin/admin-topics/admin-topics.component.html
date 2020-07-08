@@ -1,0 +1,6 @@
+<app-header [isAdmin]="true" [selected] ="'topics'"></app-header>
+<app-table [header]="header" [rows]="rows" [TableHeading]="'Topics'"
+[showAddBtn]="showAddBtn" [displayTopics]="true" [modalButton]="'Add'"
+[modalType]="'Submit'" (onSubmitFun)="onSubmitFun($event)" [showForm]="'topics'"
+[modalTitle]="'Add Topic'" (onDelete)="onDelete($event)"
+></app-table>
