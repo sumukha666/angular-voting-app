@@ -6,13 +6,13 @@ const getTopics = async (req, res) => {
         db.query("SELECT * FROM Topic", function (err, result, fields) {
             if (err) {
                 res.status(500).json({ success: false, topics: [] });
-                throw err;
+                console.log(err);
             } else {
                 res.status(200).json({ success: true, topics: result });
             }
         });
     } catch (err) {
-        console.log(err)
+        console.log(err);
         res.status(500).json({ success: false, topics: [] });
     }
 }
@@ -28,7 +28,7 @@ const createTopic = async (req, res) => {
         db.query(query, function (err, result, fields) {
             if (err) {
                 res.status(500).json({ success: false, message: "something went wrong, please try again" });
-                throw err;
+                console.log(err);
             } else {
                 return res.status(200).json({ success: true, message: "created topic successfully" });
             }
@@ -47,7 +47,7 @@ const deleteTopic = async (req, res) => {
         db.query(query, function (err, result, fields) {
             if (err) {
                 res.status(500).json({ success: false, message: "something went wrong, please try again" });
-                throw err;
+                console.log(err);
             } else {
                 return res.status(200).json({ success: true, message: "Deleted topic successfully" });
             }

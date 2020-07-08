@@ -5,7 +5,7 @@ const getVotes = async (req, res) => {
         db.query("SELECT * FROM Vote", function (err, result, fields) {
             if (err) {
                 res.json({ success: false, votes: [] });
-                throw err;
+                console.log(err);
             } else {
                 res.status(200).json({ success: true, votes: result }); 
             }
@@ -22,7 +22,7 @@ const getVoteDetails = async (req, res) => {
     try {
         db.query(`SELECT * FROM Vote WHERE respId=${id}`, function (err, result, fields) {
             if (err) {
-                throw err;
+                console.log(err);
             } else {
                 res.json({ success: false, votes: [] });
                 res.status(200).json({ success: true, votes: result });
@@ -47,7 +47,7 @@ const createVote = async (req, res) => {
         db.query(query, function (err, result, fields) {
             if (err) {
                 res.status(500).json({ success: false, message: "something went wrong, please try again" });
-                throw err;
+                console.log(err);
             } else {
                 return res.status(200).json({ success: true, message: "response saved successfully" });
             }
